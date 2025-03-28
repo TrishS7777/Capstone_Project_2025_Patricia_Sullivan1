@@ -9,6 +9,11 @@ It’s estimated that about 30 million people in the United States have COPD. As
 
 The purpose of this Analysis is to analyze various factors that occur with and possibly affect COPD. We look at the severity of copd (stages 1, 2, 3, 4), Ages of those in each stage, do men or women tend to get copd more often, and other factors.  
 
+GOLD Stages:
+The Global Initiative for Chronic Obstructive Lung Disease (GOLD) system categorizes COPD severity into stages, with stage 4 representing very severe COPD (FEV1 less than 30%). 
+
+There is no cure for COPD (Chronic Obstructive Pulmonary Disease), but certain treatments and Pulmonary Rehabilitation may improve the condition, the patient's quality of life and extend life expectancy. 
+
 ============================================================================
 
 Note: In the future as time allows, I plan to analyze this data further to find out how Pulmonary  rehabilitation improves the symptoms and severity of COPD by looking at the 6 minute walk test results, FEV1 scores, and other information, before and after pulmonary rehabilitation. This will require merging an additional dataset with the pulmonary rehabilitation information.
@@ -87,24 +92,81 @@ It includes 101 patients and 24 variables. There's information on their characte
 FROM DATASET2 (patient_risk_profiles.csv)
 About the data:
 
+The virtual R/Pharma Conference is happening this week! To celebrate, we're exploring Patient Risk Profiles. Thank you to Jenna Reps for preparing this data!
 
+This dataset contains 100 simulated patient's medical history features and the predicted 1-year risk of 14 outcomes based on each patient's medical history features. The predictions used real logistic regression models developed on a large real world healthcare dataset.
+
+*There are over 100 column names with various conditions, smoking, etc...too many to list.  Here are the ones
+ that were not dropped:
+
+*personId = ID
+
+*Sex = FEMALE integer	A binary column where 1 means the patient has a female sex
+
+*Sex = MALE	integer	A binary column where 1 means the patient has a male sex
+
+*Heart failure in prior year	integer	A binary column where 1 means the patient had a record for heart 
+ failure in the prior year and 0 means they did not
+
+*Chronic obstructive pulmonary disease (COPD) in prior year	integer	A binary column where 1 means the patient had 
+ a record for chronic obstructive pulmonary disease in the prior year and 0 means they did not
 
 
 ----------------------------------------------------------------------------
-FROM DATASET3 (respiratory_symptoms_and_treatment.csv)
-About the data:
+FROM DATASET3 (respiratory_symptoms_and_treatment.csv) (from the Kaggle dataset)
+About the dataset:
  
+Context (paraphrased summary)
+Respiratory isease causes an immense health burden. It is estimated that worldwide, more than 200 million people have chronic obstructive pulmonary disease (COPD), 65 million endure moderate-to-severe COPD, 1–6% of the adult population (more than 100 million people) experience sleep-disordered breathing, 9.6 million people develop tuberculosis (TB) annually, millions live with Pulmonary Hypertension and more than 50 million people struggle with occupational lung diseases,more than 1 billion people suffering from chronic respiratory conditions. At least 2 billion people are exposed to the toxic effects of biomass fuel consumption, 1 billion are exposed to outdoor air pollution and 1 billion are exposed to tobacco smoke. Each year, 4 million people die prematurely from chronic respiratory disease.To analyze pulmonary diseases we collected the data from the local health department of Albuquerque, NM, US. The Data containing different attributes to identify the disease and nature.
+
+Content
+This data was collected from public health department to identify different chronic respiratory diseases across the state of NM,US.
+This data consists of different attributes like Name,age,sex,diseases,treatment and nature.Here Name,Sex,Diseases,Treatment and Nature are string values and some of them like Sex and nature are categorical values.This data contains 37000+ records till now and it has been updated regularly in quarterly basis.
+
+Acknowledgements
+We would like to thank public health department of New Mexico for their cooperation and considering our request.
+
+List of Variables:
+* Symptoms
+
+* Age
+
+* Sex
+
+* Disease
+
+* Treatment
+
+* Nature
 
 
  ===========================================================================
+ MY HYPOTHESES OF WHAT THE ANALYSIS WILL REVEAL:
 
+ * My hypothesis is that the longer a person smoked, the more severe their case/stage of copd would be. 
+ * I also think that we would see more people with copd in the higher ages because they have smoked (or been    
+   exposed to polutants) longer or enough to develop COPD. 
+ * It will be interesting to find out if more men or women have a higher incidence of COPD. I do not have a 
+   hypothesis either way on this factor. 
+ * I would think that co-morbidities would be high, because copd limits the ability for the body to get oxygen
+   to parts of the body. It seems like that would be harder on the heart and immune system. For now I am just looking at ischemic Heart Disease, but as time permits, I plan to expand this study. 
 
-
- My hypotheses and what I would expect to find:
-
-
-
-
-
-
+=============================================================================
  Where the data took us.  What the analysis showed.
+
+The analyses so far show that: 
+ * Phase 2 COPD has the highest occurence, and there was only 1 occurence of VERY SEVERE COPD. The low incidence  
+   of VERY SEVERE COPD could be attributed to the high death rate of those with SEVERE COPD. Further analysis is needed to confirm or disprove this theory. 
+
+ * Males have a higher incidence of COPD than Females. 
+
+ * Only 7 people out of 52 with COPD also have IHD, so there seems to be a very low correlation between those 
+   specific conditions/diseases. 
+
+ * A higher (longer) PackHistory does show a correlation with the number of incidences and severity of COPD. 
+
+ * The most common ages for highest incidence of copd are 60 through 80. There is an increasing trend in the  
+   number of incidences into the mid-70's, then starts decreasing again. There is a very low incidence past age 80. This is probably because only a few people with copd live that long. Further analysis is needed to compare 
+   the life expectancy of a normal healthy person with a person with copd (unless we want to look at previous studies).
+
+ * The plan is to continue looking at additional relationships between copd and other comorbidities and factors. 
